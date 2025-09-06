@@ -238,7 +238,7 @@ export default function ContactSection() {
                   </div>
                   <div>
                     <div className="font-semibold">Phone</div>
-                    <div className="text-muted-foreground">+1 (555) 123-4567</div>
+                    <div className="text-muted-foreground">+61 466 312 807</div>
                   </div>
                 </div>
                 
