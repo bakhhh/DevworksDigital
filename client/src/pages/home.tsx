@@ -74,7 +74,6 @@ export default function Home() {
               <ul className="space-y-2 text-muted-foreground">
                 <li>devworks@gmail.com</li>
                 <li>+61 466 312 807</li>
-                <li>123 Tech Street<br />San Francisco, CA 94105</li>
               </ul>
             </div>
           </div>
