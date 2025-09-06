@@ -20,7 +20,6 @@ export default function Home() {
       <TestimonialsSection />
       <AboutSection />
       <ContactSection />
-      
       {/* Footer */}
       <footer className="bg-card border-t border-border py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -74,7 +73,7 @@ export default function Home() {
               <h4 className="font-semibold mb-4">Contact</h4>
               <ul className="space-y-2 text-muted-foreground">
                 <li>hello@devworks.agency</li>
-                <li>+1 (555) 123-4567</li>
+                <li>+61 466 312 807</li>
                 <li>123 Tech Street<br />San Francisco, CA 94105</li>
               </ul>
             </div>
