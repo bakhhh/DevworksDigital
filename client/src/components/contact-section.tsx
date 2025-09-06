@@ -228,7 +228,7 @@ export default function ContactSection() {
                   </div>
                   <div>
                     <div className="font-semibold">Email</div>
-                    <div className="text-muted-foreground">hello@devworks.agency</div>
+                    <div className="text-muted-foreground">devworks@gmail.com</div>
                   </div>
                 </div>
                 
