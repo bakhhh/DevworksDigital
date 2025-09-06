@@ -24,9 +24,7 @@ export default function AboutSection() {
             <p className="text-xl text-muted-foreground mb-6">
               We're a passionate team of designers, developers, and digital strategists who believe in the power of technology to transform businesses and create meaningful connections.
             </p>
-            <p className="text-muted-foreground mb-8">
-              Founded in 2019, DevWorks has grown from a small startup to a trusted partner for businesses of all sizes. Our mission is simple: to transform your ideas into digital reality through innovative design, cutting-edge development, and strategic thinking.
-            </p>
+            <p className="text-muted-foreground mb-8">Our mission is simple: to transform your ideas into digital reality through innovative design, cutting-edge development, and strategic thinking.</p>
             
             {/* Team Stats */}
             <div className="grid grid-cols-2 gap-8 mb-8">
