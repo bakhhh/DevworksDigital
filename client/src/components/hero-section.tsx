@@ -36,7 +36,7 @@ export default function HeroSection() {
             <Button 
               variant="outline"
               onClick={() => scrollToSection('portfolio')}
-              className="border-border text-foreground px-8 py-4 text-lg font-semibold hover:bg-card transition-all transform hover:scale-105"
+              className="hidden border-border text-foreground px-8 py-4 text-lg font-semibold hover:bg-card transition-all transform hover:scale-105"
               data-testid="button-view-work"
             >
               View Our Work
