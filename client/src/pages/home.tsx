@@ -72,7 +72,7 @@ export default function Home() {
             <div>
               <h4 className="font-semibold mb-4">Contact</h4>
               <ul className="space-y-2 text-muted-foreground">
-                <li>hello@devworks.agency</li>
+                <li>devworks@gmail.com</li>
                 <li>+61 466 312 807</li>
                 <li>123 Tech Street<br />San Francisco, CA 94105</li>
               </ul>
