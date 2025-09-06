@@ -9,7 +9,7 @@ export default function AboutSection() {
   };
 
   const stats = [
-    { number: "15+", label: "Team Members" },
+    { number: "99%", label: "Client Satisfaction" },
     { number: "5+", label: "Years Experience" },
     { number: "25+", label: "Technologies" },
     { number: "24/7", label: "Support" }
