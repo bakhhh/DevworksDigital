@@ -1,6 +1,5 @@
 export default function StatsSection() {
   const stats = [
-    { number: "150+", label: "Projects Completed", color: "primary" },
     { number: "98%", label: "Client Satisfaction", color: "secondary" },
     { number: "5+", label: "Years Experience", color: "primary" },
     { number: "24/7", label: "Support Available", color: "secondary" }
