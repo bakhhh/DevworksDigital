@@ -254,40 +254,7 @@ export default function ContactSection() {
               </div>
             </div>
             
-            {/* Social Links */}
-            <div className="bg-card rounded-xl p-8">
-              <h3 className="text-xl font-bold mb-4">Follow us</h3>
-              <div className="flex space-x-4">
-                <a 
-                  href="#" 
-                  className="w-10 h-10 bg-primary/20 rounded-lg flex items-center justify-center text-primary hover:bg-primary hover:text-primary-foreground transition-colors"
-                  data-testid="social-twitter"
-                >
-                  <i className="fab fa-twitter"></i>
-                </a>
-                <a 
-                  href="#" 
-                  className="w-10 h-10 bg-primary/20 rounded-lg flex items-center justify-center text-primary hover:bg-primary hover:text-primary-foreground transition-colors"
-                  data-testid="social-linkedin"
-                >
-                  <i className="fab fa-linkedin"></i>
-                </a>
-                <a 
-                  href="#" 
-                  className="w-10 h-10 bg-primary/20 rounded-lg flex items-center justify-center text-primary hover:bg-primary hover:text-primary-foreground transition-colors"
-                  data-testid="social-github"
-                >
-                  <i className="fab fa-github"></i>
-                </a>
-                <a 
-                  href="#" 
-                  className="w-10 h-10 bg-primary/20 rounded-lg flex items-center justify-center text-primary hover:bg-primary hover:text-primary-foreground transition-colors"
-                  data-testid="social-dribbble"
-                >
-                  <i className="fab fa-dribbble"></i>
-                </a>
-              </div>
-            </div>
+            
           </div>
         </div>
       </div>
