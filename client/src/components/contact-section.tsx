@@ -6,7 +6,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { useToast } from "@/hooks/use-toast";
-import { Mail, Phone, MapPin } from "lucide-react";
+import { Mail, Phone } from "lucide-react";
 import { apiRequest } from "@/lib/queryClient";
 
 interface ContactForm {
@@ -242,15 +242,7 @@ export default function ContactSection() {
                   </div>
                 </div>
                 
-                <div className="flex items-center" data-testid="contact-address">
-                  <div className="w-12 h-12 bg-primary/20 rounded-lg flex items-center justify-center mr-4">
-                    <MapPin className="text-primary w-6 h-6" />
-                  </div>
-                  <div>
-                    <div className="font-semibold">Office</div>
-                    <div className="text-muted-foreground">123 Tech Street<br />San Francisco, CA 94105</div>
-                  </div>
-                </div>
+                
               </div>
             </div>
             
