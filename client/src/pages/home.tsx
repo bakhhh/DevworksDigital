@@ -53,9 +53,7 @@ export default function Home() {
               <ul className="space-y-2 text-muted-foreground">
                 <li><a href="#services" className="hover:text-primary transition-colors">Web Development</a></li>
                 <li><a href="#services" className="hover:text-primary transition-colors">UI/UX Design</a></li>
-                <li><a href="#services" className="hover:text-primary transition-colors">E-commerce</a></li>
-                <li><a href="#services" className="hover:text-primary transition-colors">Mobile Apps</a></li>
-                <li><a href="#services" className="hover:text-primary transition-colors">Digital Marketing</a></li>
+                <li><a href="#services" className="hover:text-primary transition-colors">Maintenance & Support</a></li>
               </ul>
             </div>
             

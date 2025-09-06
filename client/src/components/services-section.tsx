@@ -1,4 +1,4 @@
-import { Code, Paintbrush, ShoppingCart, Smartphone, TrendingUp, Wrench, Check } from "lucide-react";
+import { Code, Paintbrush, Wrench, Check } from "lucide-react";
 
 const services = [
   {
@@ -26,46 +26,10 @@ const services = [
     ]
   },
   {
-    icon: ShoppingCart,
-    title: "E-commerce Solutions",
-    description: "Complete online stores with secure payment processing, inventory management, and conversion optimization.",
-    color: "primary",
-    features: [
-      "Payment Integration",
-      "Inventory Management",
-      "Order Processing",
-      "Analytics & Reporting"
-    ]
-  },
-  {
-    icon: Smartphone,
-    title: "Mobile Applications",
-    description: "Native and cross-platform mobile apps that deliver exceptional user experiences on iOS and Android.",
-    color: "secondary",
-    features: [
-      "iOS & Android",
-      "Cross-Platform",
-      "App Store Optimization",
-      "Push Notifications"
-    ]
-  },
-  {
-    icon: TrendingUp,
-    title: "Digital Marketing",
-    description: "Strategic digital marketing campaigns that drive traffic, generate leads, and grow your online presence.",
-    color: "primary",
-    features: [
-      "SEO Optimization",
-      "Social Media Marketing",
-      "PPC Advertising",
-      "Content Strategy"
-    ]
-  },
-  {
     icon: Wrench,
     title: "Maintenance & Support",
     description: "Ongoing maintenance, updates, and technical support to keep your digital assets running smoothly and securely.",
-    color: "secondary",
+    color: "primary",
     features: [
       "24/7 Monitoring",
       "Security Updates",
