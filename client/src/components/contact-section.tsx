@@ -90,7 +90,7 @@ export default function ContactSection() {
           </p>
         </div>
         
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
+        <div className="grid grid-cols-1 gap-16">
           {/* Contact Form */}
           <div className="bg-card rounded-xl p-8">
             <h3 className="text-2xl font-bold mb-6">Send us a message</h3>
@@ -217,37 +217,7 @@ export default function ContactSection() {
             </form>
           </div>
           
-          {/* Contact Information */}
-          <div className="space-y-8">
-            <div className="bg-card rounded-xl p-8">
-              <h3 className="text-2xl font-bold mb-6">Get in touch</h3>
-              <div className="space-y-6">
-                <div className="flex items-center" data-testid="contact-email">
-                  <div className="w-12 h-12 bg-primary/20 rounded-lg flex items-center justify-center mr-4">
-                    <Mail className="text-primary w-6 h-6" />
-                  </div>
-                  <div>
-                    <div className="font-semibold">Email</div>
-                    <div className="text-muted-foreground">devworks@gmail.com</div>
-                  </div>
-                </div>
-                
-                <div className="flex items-center" data-testid="contact-phone">
-                  <div className="w-12 h-12 bg-secondary/20 rounded-lg flex items-center justify-center mr-4">
-                    <Phone className="text-secondary w-6 h-6" />
-                  </div>
-                  <div>
-                    <div className="font-semibold">Phone</div>
-                    <div className="text-muted-foreground">+61 466 312 807</div>
-                  </div>
-                </div>
-                
-                
-              </div>
-            </div>
-            
-            
-          </div>
+          
         </div>
       </div>
     </section>
