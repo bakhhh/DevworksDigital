@@ -52,7 +52,7 @@ export default function FloatingCode() {
       {snippets.map((snippet) => (
         <div
           key={snippet.id}
-          className="absolute font-mono text-sm text-primary/5 select-none"
+          className="absolute font-mono text-sm text-primary/2 select-none"
           style={{
             left: `${snippet.x}%`,
             top: `${snippet.y}%`,
