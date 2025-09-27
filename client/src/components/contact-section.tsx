@@ -7,7 +7,6 @@ import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { useToast } from "@/hooks/use-toast";
 import { Mail, Phone } from "lucide-react";
-import { apiRequest } from "@/lib/queryClient";
 
 interface ContactForm {
   firstName: string;
@@ -33,21 +32,35 @@ export default function ContactSection() {
 
   const contactMutation = useMutation({
     mutationFn: async (data: ContactForm) => {
-      // Use Vercel serverless function for email sending
-      const response = await fetch('/api/contact', {
+      // Use Web3Forms API for email sending
+      const formData = {
+        access_key: 'YOUR_WEB3FORMS_ACCESS_KEY', // This will be replaced with actual key
+        name: `${data.firstName} ${data.lastName}`,
+        email: data.email,
+        company: data.company || '',
+        project_type: data.projectType,
+        budget: data.budget,
+        message: data.message,
+        subject: `New Contact Form Submission from ${data.firstName} ${data.lastName}`,
+        from_name: 'DevWorks Website'
+      };
+
+      const response = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          'Accept': 'application/json'
         },
-        body: JSON.stringify(data),
+        body: JSON.stringify(formData),
       });
       
-      if (!response.ok) {
-        const errorData = await response.json().catch(() => ({ message: 'Network error' }));
-        throw new Error(errorData.message || 'Failed to send message');
+      const result = await response.json();
+      
+      if (!response.ok || !result.success) {
+        throw new Error(result.message || 'Failed to send message');
       }
       
-      return await response.json();
+      return result;
     },
     onSuccess: () => {
       toast({
