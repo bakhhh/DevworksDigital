@@ -24,6 +24,9 @@ const pricingPackages = [
     period: "/project",
     features: [
       "Up to 15 pages",
+      "Responsive design",
+      "Contact forms",
+      "CMS integration",
       "Custom design & animations",
       "3 months support",
       "Unlimited revisions",
@@ -103,7 +106,7 @@ export default function PricingSection() {
           {pricingPackages.map((pkg, index) => (
             <div 
               key={pkg.name}
-              className={`pricing-card rounded-xl p-8 text-center relative ${
+              className={`pricing-card rounded-xl p-8 text-center relative transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-2xl hover:shadow-primary/20 hover:-translate-y-2 ${
                 pkg.featured ? 'featured' : ''
               }`}
               data-testid={`pricing-card-${index}`}
