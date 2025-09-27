@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
+import emailjs from '@emailjs/browser';
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -19,6 +20,7 @@ interface ContactForm {
 
 export default function ContactSection() {
   const { toast } = useToast();
+  const form = useRef<HTMLFormElement>(null);
   const [formData, setFormData] = useState<ContactForm>({
     firstName: "",
     lastName: "",
@@ -32,9 +34,10 @@ export default function ContactSection() {
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    
     // Basic validation
     if (!formData.firstName || !formData.lastName || !formData.email || !formData.message) {
-      e.preventDefault();
       toast({
         title: "Please fill in all required fields",
         description: "First name, last name, email, and message are required.",
@@ -44,24 +47,40 @@ export default function ContactSection() {
     }
 
     setIsSubmitting(true);
-    
-    // Show success message after form submission (simulated)
-    setTimeout(() => {
-      toast({
-        title: "Message sent successfully!",
-        description: "We'll get back to you within 24 hours.",
-      });
-      setFormData({
-        firstName: "",
-        lastName: "",
-        email: "",
-        company: "",
-        projectType: "",
-        budget: "",
-        message: ""
-      });
-      setIsSubmitting(false);
-    }, 2000);
+
+    // EmailJS configuration - these need to be set up by the user
+    const serviceId = 'YOUR_SERVICE_ID';
+    const templateId = 'YOUR_TEMPLATE_ID';
+    const publicKey = 'YOUR_PUBLIC_KEY';
+
+    if (form.current) {
+      emailjs.sendForm(serviceId, templateId, form.current, publicKey)
+        .then(() => {
+          toast({
+            title: "Message sent successfully!",
+            description: "We'll get back to you within 24 hours.",
+          });
+          setFormData({
+            firstName: "",
+            lastName: "",
+            email: "",
+            company: "",
+            projectType: "",
+            budget: "",
+            message: ""
+          });
+          setIsSubmitting(false);
+        })
+        .catch((error) => {
+          console.error('EmailJS error:', error);
+          toast({
+            title: "Failed to send message",
+            description: "Please try again later or contact us directly.",
+            variant: "destructive",
+          });
+          setIsSubmitting(false);
+        });
+    }
   };
 
   const handleInputChange = (field: keyof ContactForm, value: string) => {
@@ -82,10 +101,9 @@ export default function ContactSection() {
           {/* Contact Form */}
           <div className="bg-card rounded-xl p-8">
             <h3 className="text-2xl font-bold mb-6">Send us a message</h3>
-            <form action="https://api.web3forms.com/submit" method="POST" onSubmit={handleSubmit} className="space-y-6">
-              <input type="hidden" name="access_key" value="5dda6af4-f186-4907-989a-0b7844b9c753" />
-              <input type="hidden" name="subject" value="New Contact Form Submission from DevWorks Website" />
-              <input type="hidden" name="from_name" value="DevWorks Website" />
+            <form ref={form} onSubmit={handleSubmit} className="space-y-6">
+              {/* Hidden fields for additional data */}
+              <input type="hidden" name="company" value={formData.company} />
               <input type="hidden" name="project_type" value={formData.projectType} />
               <input type="hidden" name="budget" value={formData.budget} />
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -96,7 +114,7 @@ export default function ContactSection() {
                   <Input
                     type="text"
                     id="firstName"
-                    name="first_name"
+                    name="from_name"
                     value={formData.firstName}
                     onChange={(e) => handleInputChange('firstName', e.target.value)}
                     placeholder="John"
@@ -128,7 +146,7 @@ export default function ContactSection() {
                 <Input
                   type="email"
                   id="email"
-                  name="email"
+                  name="reply_to"
                   value={formData.email}
                   onChange={(e) => handleInputChange('email', e.target.value)}
                   placeholder="john@example.com"
