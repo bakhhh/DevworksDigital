@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { Check, Smartphone, TrendingUp, Shield, Zap } from "lucide-react";
+import { Check, Smartphone, TrendingUp, Shield, Zap, Search } from "lucide-react";
 
 const pricingPackages = [
   {
@@ -71,6 +71,13 @@ const addOnServices = [
     description: "Speed optimization package",
     price: "+$2,500",
     color: "secondary"
+  },
+  {
+    icon: Search,
+    title: "SEO Package",
+    description: "6-month SEO optimization",
+    price: "$2,000/mo",
+    color: "primary"
   }
 ];
 
