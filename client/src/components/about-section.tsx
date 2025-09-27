@@ -10,7 +10,7 @@ export default function AboutSection() {
 
   const stats = [
     { number: "99%", label: "Client Satisfaction" },
-    { number: "5+", label: "Years Experience" },
+    { number: "50+", label: "Projects Delivered" },
     { number: "25+", label: "Technologies" },
     { number: "24/7", label: "Support" }
   ];
