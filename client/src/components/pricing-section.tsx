@@ -5,7 +5,7 @@ const pricingPackages = [
   {
     name: "Starter",
     description: "Perfect for small businesses and startups",
-    price: "$2,500",
+    price: "$500",
     period: "/project",
     features: [
       "Up to 5 pages",
@@ -21,7 +21,7 @@ const pricingPackages = [
   {
     name: "Professional",
     description: "Ideal for growing businesses",
-    price: "$8,500",
+    price: "$1,500",
     period: "/project",
     features: [
       "Up to 15 pages",
@@ -38,7 +38,7 @@ const pricingPackages = [
   {
     name: "Enterprise",
     description: "For large-scale applications",
-    price: "$25,000",
+    price: "$5,000",
     period: "+",
     features: [
       "Unlimited pages",
