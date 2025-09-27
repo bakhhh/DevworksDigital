@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { useMutation } from "@tanstack/react-query";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -30,39 +29,24 @@ export default function ContactSection() {
     message: ""
   });
 
-  const contactMutation = useMutation({
-    mutationFn: async (data: ContactForm) => {
-      // Use Web3Forms API for email sending
-      const formData = {
-        access_key: '5dda6af4-f186-4907-989a-0b7844b9c753',
-        name: `${data.firstName} ${data.lastName}`,
-        email: data.email,
-        company: data.company || '',
-        project_type: data.projectType,
-        budget: data.budget,
-        message: data.message,
-        subject: `New Contact Form Submission from ${data.firstName} ${data.lastName}`,
-        from_name: 'DevWorks Website'
-      };
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-      const response = await fetch('https://api.web3forms.com/submit', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json'
-        },
-        body: JSON.stringify(formData),
+  const handleSubmit = (e: React.FormEvent) => {
+    // Basic validation
+    if (!formData.firstName || !formData.lastName || !formData.email || !formData.message) {
+      e.preventDefault();
+      toast({
+        title: "Please fill in all required fields",
+        description: "First name, last name, email, and message are required.",
+        variant: "destructive",
       });
-      
-      const result = await response.json();
-      
-      if (!response.ok || !result.success) {
-        throw new Error(result.message || 'Failed to send message');
-      }
-      
-      return result;
-    },
-    onSuccess: () => {
+      return;
+    }
+
+    setIsSubmitting(true);
+    
+    // Show success message after form submission (simulated)
+    setTimeout(() => {
       toast({
         title: "Message sent successfully!",
         description: "We'll get back to you within 24 hours.",
@@ -76,30 +60,8 @@ export default function ContactSection() {
         budget: "",
         message: ""
       });
-    },
-    onError: (error) => {
-      toast({
-        title: "Failed to send message",
-        description: error.message || "Please try again later.",
-        variant: "destructive",
-      });
-    },
-  });
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    
-    // Basic validation
-    if (!formData.firstName || !formData.lastName || !formData.email || !formData.message) {
-      toast({
-        title: "Please fill in all required fields",
-        description: "First name, last name, email, and message are required.",
-        variant: "destructive",
-      });
-      return;
-    }
-
-    contactMutation.mutate(formData);
+      setIsSubmitting(false);
+    }, 2000);
   };
 
   const handleInputChange = (field: keyof ContactForm, value: string) => {
@@ -120,7 +82,12 @@ export default function ContactSection() {
           {/* Contact Form */}
           <div className="bg-card rounded-xl p-8">
             <h3 className="text-2xl font-bold mb-6">Send us a message</h3>
-            <form onSubmit={handleSubmit} className="space-y-6">
+            <form action="https://api.web3forms.com/submit" method="POST" onSubmit={handleSubmit} className="space-y-6">
+              <input type="hidden" name="access_key" value="5dda6af4-f186-4907-989a-0b7844b9c753" />
+              <input type="hidden" name="subject" value="New Contact Form Submission from DevWorks Website" />
+              <input type="hidden" name="from_name" value="DevWorks Website" />
+              <input type="hidden" name="project_type" value={formData.projectType} />
+              <input type="hidden" name="budget" value={formData.budget} />
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
                   <Label htmlFor="firstName" className="block text-sm font-medium text-foreground mb-2">
@@ -129,6 +96,7 @@ export default function ContactSection() {
                   <Input
                     type="text"
                     id="firstName"
+                    name="first_name"
                     value={formData.firstName}
                     onChange={(e) => handleInputChange('firstName', e.target.value)}
                     placeholder="John"
@@ -143,6 +111,7 @@ export default function ContactSection() {
                   <Input
                     type="text"
                     id="lastName"
+                    name="last_name"
                     value={formData.lastName}
                     onChange={(e) => handleInputChange('lastName', e.target.value)}
                     placeholder="Doe"
@@ -159,6 +128,7 @@ export default function ContactSection() {
                 <Input
                   type="email"
                   id="email"
+                  name="email"
                   value={formData.email}
                   onChange={(e) => handleInputChange('email', e.target.value)}
                   placeholder="john@example.com"
@@ -174,6 +144,7 @@ export default function ContactSection() {
                 <Input
                   type="text"
                   id="company"
+                  name="company"
                   value={formData.company}
                   onChange={(e) => handleInputChange('company', e.target.value)}
                   placeholder="Your Company"
@@ -223,6 +194,7 @@ export default function ContactSection() {
                 </Label>
                 <Textarea
                   id="message"
+                  name="message"
                   value={formData.message}
                   onChange={(e) => handleInputChange('message', e.target.value)}
                   rows={4}
@@ -235,10 +207,10 @@ export default function ContactSection() {
               <Button 
                 type="submit" 
                 className="w-full bg-primary text-primary-foreground py-3 hover:bg-primary/90"
-                disabled={contactMutation.isPending}
+                disabled={isSubmitting}
                 data-testid="button-send-message"
               >
-                {contactMutation.isPending ? "Sending..." : "Send Message"}
+                {isSubmitting ? "Sending..." : "Send Message"}
               </Button>
             </form>
           </div>
