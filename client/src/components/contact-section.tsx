@@ -33,22 +33,26 @@ export default function ContactSection() {
 
   const contactMutation = useMutation({
     mutationFn: async (data: ContactForm) => {
-      // Check if we're in development with backend available
-      if (import.meta.env.DEV) {
-        const response = await apiRequest("POST", "/api/contacts", data);
-        return response.json();
-      } else {
-        // For static deployment, simulate success and log data
-        console.log("Contact form submission:", data);
-        return new Promise(resolve => setTimeout(() => resolve({ success: true }), 1000));
+      // Use Vercel serverless function for email sending
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      });
+      
+      if (!response.ok) {
+        const errorData = await response.json().catch(() => ({ message: 'Network error' }));
+        throw new Error(errorData.message || 'Failed to send message');
       }
+      
+      return await response.json();
     },
     onSuccess: () => {
       toast({
         title: "Message sent successfully!",
-        description: import.meta.env.DEV 
-          ? "We'll get back to you within 24 hours."
-          : "Thank you for your interest! Please email us directly at devworks@gmail.com",
+        description: "We'll get back to you within 24 hours.",
       });
       setFormData({
         firstName: "",
@@ -63,9 +67,7 @@ export default function ContactSection() {
     onError: (error) => {
       toast({
         title: "Failed to send message",
-        description: import.meta.env.DEV 
-          ? error.message || "Please try again later."
-          : "Please contact us directly at devworks@gmail.com",
+        description: error.message || "Please try again later.",
         variant: "destructive",
       });
     },
