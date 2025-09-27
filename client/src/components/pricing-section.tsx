@@ -10,7 +10,6 @@ const pricingPackages = [
     features: [
       "Up to 5 pages",
       "Responsive design",
-      "Basic SEO setup",
       "Contact forms",
       "CMS integration",
       "1 month support",
@@ -26,9 +25,6 @@ const pricingPackages = [
     features: [
       "Up to 15 pages",
       "Custom design & animations",
-      "Advanced SEO optimization",
-      "E-commerce functionality",
-      "User accounts & dashboards",
       "3 months support",
       "Unlimited revisions",
       "Analytics integration"
@@ -63,13 +59,6 @@ const addOnServices = [
     color: "primary"
   },
   {
-    icon: TrendingUp,
-    title: "SEO Package",
-    description: "6-month SEO campaign",
-    price: "$2,000/mo",
-    color: "secondary"
-  },
-  {
     icon: Shield,
     title: "Security Audit",
     description: "Comprehensive security review",
@@ -99,7 +88,7 @@ export default function PricingSection() {
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-4">Transparent Pricing</h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Choose the perfect package for your project. All plans include responsive design, SEO optimization, and ongoing support.
+            Choose the perfect package for your project. All plans include responsive design and ongoing support.
           </p>
         </div>
         
