@@ -34,7 +34,7 @@ export default function ContactSection() {
     mutationFn: async (data: ContactForm) => {
       // Use Web3Forms API for email sending
       const formData = {
-        access_key: 'YOUR_WEB3FORMS_ACCESS_KEY', // This will be replaced with actual key
+        access_key: '5dda6af4-f186-4907-989a-0b7844b9c753',
         name: `${data.firstName} ${data.lastName}`,
         email: data.email,
         company: data.company || '',
