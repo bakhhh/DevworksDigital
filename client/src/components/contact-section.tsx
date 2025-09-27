@@ -198,10 +198,10 @@ export default function ContactSection() {
                     <SelectValue placeholder="Select budget range" />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="2500-5000">$2,500 - $5,000</SelectItem>
-                    <SelectItem value="5000-15000">$5,000 - $15,000</SelectItem>
-                    <SelectItem value="15000-30000">$15,000 - $30,000</SelectItem>
-                    <SelectItem value="30000+">$30,000+</SelectItem>
+                    <SelectItem value="500">$500 (Starter Package)</SelectItem>
+                    <SelectItem value="1500">$1,500 (Professional Package)</SelectItem>
+                    <SelectItem value="5000">$5,000 (Enterprise Package)</SelectItem>
+                    <SelectItem value="custom">Custom Quote</SelectItem>
                   </SelectContent>
                 </Select>
               </div>
