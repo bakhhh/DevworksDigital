@@ -48,10 +48,10 @@ export default function ContactSection() {
 
     setIsSubmitting(true);
 
-    // EmailJS configuration - these need to be set up by the user
-    const serviceId = 'YOUR_SERVICE_ID';
-    const templateId = 'YOUR_TEMPLATE_ID';
-    const publicKey = 'YOUR_PUBLIC_KEY';
+    // EmailJS configuration
+    const serviceId = 'contact_service';
+    const templateId = 'contact_form';
+    const publicKey = 'wSUFYmYVXivJOUh6U';
 
     if (form.current) {
       emailjs.sendForm(serviceId, templateId, form.current, publicKey)
