@@ -12,6 +12,7 @@ interface ContactForm {
   firstName: string;
   lastName: string;
   email: string;
+  phone: string;
   company: string;
   projectType: string;
   budget: string;
@@ -25,6 +26,7 @@ export default function ContactSection() {
     firstName: "",
     lastName: "",
     email: "",
+    phone: "",
     company: "",
     projectType: "",
     budget: "",
@@ -37,10 +39,10 @@ export default function ContactSection() {
     e.preventDefault();
     
     // Basic validation
-    if (!formData.firstName || !formData.lastName || !formData.email || !formData.message) {
+    if (!formData.firstName || !formData.lastName || !formData.email || !formData.phone || !formData.message) {
       toast({
         title: "Please fill in all required fields",
-        description: "First name, last name, email, and message are required.",
+        description: "First name, last name, email, phone, and message are required.",
         variant: "destructive",
       });
       return;
@@ -64,6 +66,7 @@ export default function ContactSection() {
             firstName: "",
             lastName: "",
             email: "",
+            phone: "",
             company: "",
             projectType: "",
             budget: "",
@@ -103,6 +106,7 @@ export default function ContactSection() {
             <h3 className="text-2xl font-bold mb-6">Send us a message</h3>
             <form ref={form} onSubmit={handleSubmit} className="space-y-6">
               {/* Hidden fields for additional data */}
+              <input type="hidden" name="phone" value={formData.phone} />
               <input type="hidden" name="company" value={formData.company} />
               <input type="hidden" name="project_type" value={formData.projectType} />
               <input type="hidden" name="budget" value={formData.budget} />
@@ -152,6 +156,22 @@ export default function ContactSection() {
                   placeholder="john@example.com"
                   required
                   data-testid="input-email"
+                />
+              </div>
+              
+              <div>
+                <Label htmlFor="phone" className="block text-sm font-medium text-foreground mb-2">
+                  Phone Number *
+                </Label>
+                <Input
+                  type="tel"
+                  id="phone"
+                  name="phone"
+                  value={formData.phone}
+                  onChange={(e) => handleInputChange('phone', e.target.value)}
+                  placeholder="+1 (555) 123-4567"
+                  required
+                  data-testid="input-phone"
                 />
               </div>
               
