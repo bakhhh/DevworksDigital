@@ -43,13 +43,6 @@ export default function Navigation() {
                 Services
               </button>
               <button 
-                onClick={() => scrollToSection('portfolio')}
-                className="text-muted-foreground hover:text-primary px-3 py-2 rounded-md text-sm font-medium transition-colors"
-                data-testid="nav-portfolio"
-              >
-                Portfolio
-              </button>
-              <button 
                 onClick={() => scrollToSection('pricing')}
                 className="text-muted-foreground hover:text-primary px-3 py-2 rounded-md text-sm font-medium transition-colors"
                 data-testid="nav-pricing"
@@ -104,13 +97,6 @@ export default function Navigation() {
               data-testid="mobile-nav-services"
             >
               Services
-            </button>
-            <button 
-              onClick={() => scrollToSection('portfolio')}
-              className="text-muted-foreground hover:text-primary block px-3 py-2 rounded-md text-base font-medium w-full text-left"
-              data-testid="mobile-nav-portfolio"
-            >
-              Portfolio
             </button>
             <button 
               onClick={() => scrollToSection('pricing')}
