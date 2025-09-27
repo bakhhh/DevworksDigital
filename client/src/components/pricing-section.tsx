@@ -11,7 +11,6 @@ const pricingPackages = [
       "Up to 5 pages",
       "Responsive design",
       "Contact forms",
-      "CMS integration",
       "1 month support",
       "2 rounds of revisions"
     ],
@@ -26,7 +25,6 @@ const pricingPackages = [
       "Up to 15 pages",
       "Responsive design",
       "Contact forms",
-      "CMS integration",
       "Custom design & animations",
       "3 months support",
       "Unlimited revisions",
