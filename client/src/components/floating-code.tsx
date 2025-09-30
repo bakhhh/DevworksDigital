@@ -52,16 +52,18 @@ export default function FloatingCode() {
       {snippets.map((snippet) => (
         <div
           key={snippet.id}
-          className="absolute font-mono text-sm text-primary/30 select-none"
+          className="absolute font-mono text-sm select-none animate-rgb"
           style={{
             left: `${snippet.x}%`,
             top: `${snippet.y}%`,
             animationDelay: `${snippet.animationDelay}s`,
-            animationDuration: `${snippet.animationDuration}s`,
           }}
         >
           <div 
             className="animate-float"
+            style={{
+              animationDuration: `${snippet.animationDuration}s`,
+            }}
             dangerouslySetInnerHTML={{ __html: snippet.text }}
           />
         </div>
