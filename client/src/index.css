@@ -253,4 +253,21 @@
       transform: scale(1.05);
     }
   }
+
+  .animate-wave {
+    animation: wave 10s linear infinite;
+  }
+
+  .animate-wave-delayed {
+    animation: wave 15s linear infinite reverse;
+  }
+
+  @keyframes wave {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
 }
