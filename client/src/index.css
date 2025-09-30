@@ -68,6 +68,8 @@
 @layer utilities {
   .hero-gradient {
     background: linear-gradient(135deg, hsl(0 0% 6%) 0%, hsl(270 91% 8%) 50%, hsl(316 100% 8%) 100%);
+    background-size: 200% 200%;
+    animation: gradientShift 15s ease infinite;
   }
   
   .service-card {
@@ -204,6 +206,18 @@
     }
     25%, 75% { 
       opacity: 1; 
+    }
+  }
+
+  @keyframes gradientShift {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
     }
   }
 
