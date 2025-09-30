@@ -48,7 +48,7 @@ export default function FloatingCode() {
   }, []);
 
   return (
-    <div className="absolute inset-0 pointer-events-none overflow-hidden">
+    <div className="absolute inset-0 pointer-events-none overflow-hidden z-20">
       {snippets.map((snippet) => (
         <div
           key={snippet.id}
