@@ -6,7 +6,6 @@ interface CodeSnippet {
   x: number;
   y: number;
   animationDelay: number;
-  animationDuration: number;
 }
 
 const codeSnippets = [
@@ -31,42 +30,41 @@ const codeSnippets = [
 export default function FloatingCode() {
   const [snippets, setSnippets] = useState<CodeSnippet[]>([]);
 
-  useEffect(() => {
-    const generateSnippets = () => {
-      const newSnippets = codeSnippets.slice(0, 8).map((text, index) => ({
-        id: `snippet-${index}`,
-        text,
-        x: Math.random() * 90, // 0-90% to stay within viewport
-        y: Math.random() * 90, // 0-90% to stay within viewport
-        animationDelay: Math.random() * 6, // 0-6 seconds
-        animationDuration: 6 + Math.random() * 4, // 6-10 seconds
-      }));
-      setSnippets(newSnippets);
-    };
+  const generateSnippets = () => {
+    const newSnippets = codeSnippets.slice(0, 10).map((text, index) => ({
+      id: `snippet-${index}`,
+      text,
+      x: Math.random() * 100,
+      y: Math.random() * 100,
+      animationDelay: Math.random() * 4,
+    }));
+    setSnippets(newSnippets);
+  };
 
+  useEffect(() => {
     generateSnippets();
+    
+    const interval = setInterval(() => {
+      generateSnippets();
+    }, 4000);
+
+    return () => clearInterval(interval);
   }, []);
 
   return (
-    <div className="absolute inset-0 pointer-events-none overflow-hidden z-20">
+    <div className="absolute inset-0 pointer-events-none overflow-visible z-20">
       {snippets.map((snippet) => (
         <div
           key={snippet.id}
-          className="absolute font-mono text-sm select-none animate-rgb"
+          className="absolute font-mono text-xs md:text-sm select-none animate-rgb animate-fade-in-out"
           style={{
             left: `${snippet.x}%`,
             top: `${snippet.y}%`,
             animationDelay: `${snippet.animationDelay}s`,
+            transform: 'translate(-50%, -50%)',
           }}
-        >
-          <div 
-            className="animate-float"
-            style={{
-              animationDuration: `${snippet.animationDuration}s`,
-            }}
-            dangerouslySetInnerHTML={{ __html: snippet.text }}
-          />
-        </div>
+          dangerouslySetInnerHTML={{ __html: snippet.text }}
+        />
       ))}
     </div>
   );
