@@ -36,7 +36,7 @@ export default function FloatingCode() {
       text,
       x: Math.random() * 100,
       y: Math.random() * 100,
-      animationDelay: Math.random() * 4,
+      animationDelay: Math.random() * 6,
     }));
     setSnippets(newSnippets);
   };
@@ -46,17 +46,17 @@ export default function FloatingCode() {
     
     const interval = setInterval(() => {
       generateSnippets();
-    }, 4000);
+    }, 8000);
 
     return () => clearInterval(interval);
   }, []);
 
   return (
-    <div className="absolute inset-0 pointer-events-none overflow-visible z-20">
+    <div className="absolute inset-0 pointer-events-none overflow-hidden z-20">
       {snippets.map((snippet) => (
         <div
           key={snippet.id}
-          className="absolute font-mono text-xs md:text-sm select-none animate-rgb animate-fade-in-out"
+          className="absolute font-mono text-xs md:text-sm select-none animate-rgb animate-fade-in-out transition-all duration-[3000ms] ease-in-out"
           style={{
             left: `${snippet.x}%`,
             top: `${snippet.y}%`,

@@ -12,20 +12,20 @@ export default function HeroSection() {
 
   return (
     <section id="home" className="relative min-h-screen flex items-center justify-center hero-gradient overflow-hidden">
+      <FloatingCode />
+      
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-30">
-        <div className="animate-fade-in relative">
-          <FloatingCode />
-          
-          <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight relative z-40">
+        <div className="animate-fade-in">
+          <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
             Transforming Ideas<br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">
               Into Digital Reality
             </span>
           </h1>
-          <p className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-3xl mx-auto relative z-40">
+          <p className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-3xl mx-auto">
             We craft extraordinary digital experiences that captivate audiences, drive results, and transform your business into a digital powerhouse.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center relative z-40">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button 
               onClick={() => scrollToSection('contact')}
               className="bg-primary text-primary-foreground px-8 py-4 text-lg font-semibold hover:bg-primary/90 transition-all transform hover:scale-105 animate-glow"

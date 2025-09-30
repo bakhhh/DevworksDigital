@@ -202,12 +202,12 @@
     0%, 100% { 
       opacity: 0; 
     }
-    50% { 
+    25%, 75% { 
       opacity: 1; 
     }
   }
 
   .animate-fade-in-out {
-    animation: fadeInOut 4s ease-in-out infinite;
+    animation: fadeInOut 8s ease-in-out infinite;
   }
 }
